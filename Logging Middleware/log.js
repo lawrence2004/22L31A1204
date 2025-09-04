@@ -12,7 +12,10 @@ const Logger = async (stack, level, packageName, message) => {
 
   try {
     const { data } = await axios.post(LOG_SERVER_URL, payload, {
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${process.env.LOG_API_TOKEN}`
+      },
       timeout: 5000,
     });
 
